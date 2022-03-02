@@ -1,0 +1,6 @@
+DDOS
+
+Websites:
+{{- range .Values.ddos.websites }}
+  - {{ . }}
+{{- end }}

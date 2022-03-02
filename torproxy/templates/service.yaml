@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "torproxy.fullname" . }}
+  labels:
+    {{- include "torproxy.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: tor
+      port: 9050
+      targetPort: 9050
+      protocol: TCP
+    - name: proxy
+      port: 8118
+      targetPort: 8118
+      protocol: TCP
+  selector:
+    {{- include "torproxy.selectorLabels" . | nindent 4 }}

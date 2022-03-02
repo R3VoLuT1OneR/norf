@@ -1,0 +1,20 @@
+services:
+  torproxy:
+    image: dperson/torproxy
+    ports:
+      - "9050:9050"
+      - "8118:8118"
+    networks:
+      - proxy
+  ddosify:
+    image: ddosify/ddosify
+    entrypoint:
+      - sleep
+      - infinity
+    links:
+      - "torproxy"
+    networks:
+      - proxy
+
+networks:
+  proxy:

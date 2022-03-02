@@ -1,0 +1,6 @@
+Now you can use TOR Socks5 proxy in your cluster
+  {{ include "torproxy.fullname" . }}:{{ .Values.service.port }}
+
+Example:
+  curl --socks5-hostname {{ include "torproxy.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }} https://eomusczff87zesl.m.pipedream.net
+
